@@ -48,21 +48,21 @@ g2o::SE3Quat Converter::toSE3Quat(const cv::Mat &cvT)
 
 cv::Mat Converter::toCvMat(const g2o::SE3Quat &SE3)
 {
-    Eigen::Matrix<double,4,4> eigMat = SE3.to_homogeneous_matrix();
-    return toCvMat(eigMat);
+    Eigen::Matrix<double,4,4> eigMat = SE3.to_homogeneous_matrix(); // 将四元数和平移向量，转换成4*4的齐次矩阵
+    return toCvMat(eigMat);                                         // 放到cv::Mat里面去
 }
 
 cv::Mat Converter::toCvMat(const g2o::Sim3 &Sim3)
 {
-    Eigen::Matrix3d eigR = Sim3.rotation().toRotationMatrix();
-    Eigen::Vector3d eigt = Sim3.translation();
-    double s = Sim3.scale();
+    Eigen::Matrix3d eigR = Sim3.rotation().toRotationMatrix(); // 四元数的旋转因子--》转换成旋转矩阵
+    Eigen::Vector3d eigt = Sim3.translation();                 // 平移向量
+    double s = Sim3.scale();                                   // 尺度缩放因子
     return toCvSE3(s*eigR,eigt);
 }
 
 cv::Mat Converter::toCvMat(const Eigen::Matrix<double,4,4> &m)
 {
-    cv::Mat cvMat(4,4,CV_32F);
+    cv::Mat cvMat(4,4,CV_32F);            // OpenCV_32 float
     for(int i=0;i<4;i++)
         for(int j=0; j<4; j++)
             cvMat.at<float>(i,j)=m(i,j);
@@ -72,7 +72,7 @@ cv::Mat Converter::toCvMat(const Eigen::Matrix<double,4,4> &m)
 
 cv::Mat Converter::toCvMat(const Eigen::Matrix3d &m)
 {
-    cv::Mat cvMat(3,3,CV_32F);
+    cv::Mat cvMat(3,3,CV_32F);            // 同上
     for(int i=0;i<3;i++)
         for(int j=0; j<3; j++)
             cvMat.at<float>(i,j)=m(i,j);
@@ -82,7 +82,7 @@ cv::Mat Converter::toCvMat(const Eigen::Matrix3d &m)
 
 cv::Mat Converter::toCvMat(const Eigen::Matrix<double,3,1> &m)
 {
-    cv::Mat cvMat(3,1,CV_32F);
+    cv::Mat cvMat(3,1,CV_32F);        // 同上
     for(int i=0;i<3;i++)
             cvMat.at<float>(i)=m(i);
 
