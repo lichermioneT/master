@@ -110,7 +110,7 @@ cv::Mat Converter::toCvMat(const g2o::Sim3 &Sim3)
 
 cv::Mat Converter::toCvMat(const Eigen::Matrix<double,4,4> &m)
 {
-    cv::Mat cvMat(4,4,CV_32F);  // 4*4 CV_32F, CV的数据类型，32位。
+    cv::Mat cvMat(4,4,CV_32F);  // 4*4 CV_32F, openCV的数据类型，32位 float。
     for(int i=0;i<4;i++)
         for(int j=0; j<4; j++)
             cvMat.at<float>(i,j)=m(i,j);

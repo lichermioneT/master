@@ -71,7 +71,7 @@ namespace ORB_SLAM2
 
 const int PATCH_SIZE = 31;
 const int HALF_PATCH_SIZE = 15;
-const int EDGE_THRESHOLD = 19;
+const int EDGE_THRESHOLD = 19; // 为计算描述子和提取特征点补充的padding厚度。
 
 
 static float IC_Angle(const Mat& image, Point2f pt,  const vector<int> & u_max)
@@ -146,7 +146,7 @@ static void computeOrbDescriptor(const KeyPoint& kpt,
     #undef GET_VALUE
 }
 
-
+// 用于计算描述子的pattern变量 
 static int bit_pattern_31_[256*4] =
 {
     8,-3, 9,5/*mean (0), correlation (0)*/,
@@ -454,13 +454,14 @@ ORBextractor::ORBextractor(int _nfeatures, float _scaleFactor, int _nlevels,
     umax.resize(HALF_PATCH_SIZE + 1);
 
     int v, v0, vmax = cvFloor(HALF_PATCH_SIZE * sqrt(2.f) / 2 + 1);
+
     int vmin = cvCeil(HALF_PATCH_SIZE * sqrt(2.f) / 2);
     const double hp2 = HALF_PATCH_SIZE*HALF_PATCH_SIZE;
-    for (v = 0; v <= vmax; ++v)
+    for (v = 0; v <= vmax; ++v)                        // 计算下半45度的
         umax[v] = cvRound(sqrt(hp2 - v * v));
 
     // Make sure we are symmetric
-    for (v = HALF_PATCH_SIZE, v0 = 0; v >= vmin; --v)
+    for (v = HALF_PATCH_SIZE, v0 = 0; v >= vmin; --v) // 根据对称性 补出上半45度的umax
     {
         while (umax[v0] == umax[v0 + 1])
             ++v0;

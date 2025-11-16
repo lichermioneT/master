@@ -61,17 +61,20 @@ public:
     // Initialize the SLAM system. It launches the Local Mapping, Loop Closing and Viewer threads.
     System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor, const bool bUseViewer = true);
 
+// 跟踪双目相机，返回相机位姿
     // Proccess the given stereo frame. Images must be synchronized and rectified.
     // Input images: RGB (CV_8UC3) or grayscale (CV_8U). RGB is converted to grayscale.
     // Returns the camera pose (empty if tracking fails).
     cv::Mat TrackStereo(const cv::Mat &imLeft, const cv::Mat &imRight, const double &timestamp);
 
+// 跟踪RGBD相机，返回相机位姿
     // Process the given rgbd frame. Depthmap must be registered to the RGB frame.
     // Input image: RGB (CV_8UC3) or grayscale (CV_8U). RGB is converted to grayscale.
     // Input depthmap: Float (CV_32F).
     // Returns the camera pose (empty if tracking fails).
     cv::Mat TrackRGBD(const cv::Mat &im, const cv::Mat &depthmap, const double &timestamp);
 
+// 跟踪单目相机，返回相机位姿
     // Proccess the given monocular frame
     // Input images: RGB (CV_8UC3) or grayscale (CV_8U). RGB is converted to grayscale.
     // Returns the camera pose (empty if tracking fails).
@@ -89,11 +92,13 @@ public:
     // Reset the system (clear map)
     void Reset();
 
+// 系统关闭
     // All threads will be requested to finish.
     // It waits until all threads have finished.
     // This function must be called before saving the trajectory.
     void Shutdown();
 
+// 以TUM/KITTI格式保存相机 运动轨迹和关键位姿
     // Save camera trajectory in the TUM RGB-D dataset format.
     // Only for stereo and RGB-D. This method does not work for monocular.
     // Call first Shutdown()
@@ -124,56 +129,70 @@ public:
 
 private:
 
+// 传感器
     // Input sensor
     eSensor mSensor;
 
+// ORB字典，保存ORB描述子聚类结果
     // ORB vocabulary used for place recognition and feature matching.
     ORBVocabulary* mpVocabulary;
 
+// 关键帧数据库，保存ORB描述子倒排索引
     // KeyFrame database for place recognition (relocalization and loop detection).
     KeyFrameDatabase* mpKeyFrameDatabase;
 
+// 地图
     // Map structure that stores the pointers to all KeyFrames and MapPoints.
     Map* mpMap;
 
+// 追踪器
     // Tracker. It receives a frame and computes the associated camera pose.
     // It also decides when to insert a new keyframe, create some new MapPoints and
     // performs relocalization if tracking fails.
     Tracking* mpTracker;
 
+// 局部建图器
     // Local Mapper. It manages the local map and performs local bundle adjustment.
     LocalMapping* mpLocalMapper;
 
+// 回环检查器
     // Loop Closer. It searches loops with every new keyframe. If there is a loop it performs
     // a pose graph optimization and full bundle adjustment (in a new thread) afterwards.
     LoopClosing* mpLoopCloser;
 
+// 查看器
     // The viewer draws the map and the current camera pose. It uses Pangolin.
     Viewer* mpViewer;
 
+// 帧绘制器 && 地图绘制器
     FrameDrawer* mpFrameDrawer;
     MapDrawer* mpMapDrawer;
 
+// 局部建图线程
+// 局部回环检查线程
+// 查看器线程
     // System threads: Local Mapping, Loop Closing, Viewer.
     // The Tracking thread "lives" in the main execution thread that creates the System object.
     std::thread* mptLocalMapping;
     std::thread* mptLoopClosing;
     std::thread* mptViewer;
 
+//
     // Reset flag
-    std::mutex mMutexReset;
+    std::mutex mMutexReset;             // 系统复位
     bool mbReset;
 
     // Change mode flags
-    std::mutex mMutexMode;
+    std::mutex mMutexMode;                               // 开启、关闭纯定位模式
     bool mbActivateLocalizationMode;
     bool mbDeactivateLocalizationMode;
 
+// 追踪锁
     // Tracking state
     int mTrackingState;
     std::vector<MapPoint*> mTrackedMapPoints;
     std::vector<cv::KeyPoint> mTrackedKeyPointsUn;
-    std::mutex mMutexState;
+    std::mutex mMutexState;                          // 追踪锁状态
 };
 
 }// namespace ORB_SLAM

@@ -82,7 +82,7 @@ public:
         return mvInvLevelSigma2;
     }
 
-    std::vector<cv::Mat> mvImagePyramid;
+    std::vector<cv::Mat> mvImagePyramid; // 图像金字塔的每层的图像
 
 protected:
 
@@ -94,20 +94,23 @@ protected:
     void ComputeKeyPointsOld(std::vector<std::vector<cv::KeyPoint> >& allKeypoints);
     std::vector<cv::Point> pattern;
 
-    int nfeatures;
-    double scaleFactor;
-    int nlevels;
-    int iniThFAST;
-    int minThFAST;
+// 图像金字塔相关的数据
+// 配置文件Example/RGB-D/*.yaml
+    int nfeatures;                // 所有层级提取到的特征点树之和和金字塔层数  10000
+    double scaleFactor;           // 图像金字塔相邻层级间的缩放系数           1.2
+    int nlevels;                  // 金字塔层级数                            8
+    int iniThFAST;                // 提取特征点的描述子门槛(高)               20
+    int minThFAST;                // 提取特征点的描述子门槛(低)                7 
 
-    std::vector<int> mnFeaturesPerLevel;
 
-    std::vector<int> umax;
+    std::vector<int> mnFeaturesPerLevel; // 金字塔每层级中提取的特征点数  正比于图层边长，总和为nfeatures
 
-    std::vector<float> mvScaleFactor;
-    std::vector<float> mvInvScaleFactor;    
-    std::vector<float> mvLevelSigma2;
-    std::vector<float> mvInvLevelSigma2;
+    std::vector<int> umax;               // 后面计算的是特征点主方向上的描述子 (计算一个半径为16的圆) 
+
+    std::vector<float> mvScaleFactor;     // 各层级缩放系数
+    std::vector<float> mvInvScaleFactor;  // 各层级的缩放系数的倒数  
+    std::vector<float> mvLevelSigma2;     // 各层级缩放系数的平方
+    std::vector<float> mvInvLevelSigma2;  // 各层级缩放系数的平方倒数
 };
 
 } //namespace ORB_SLAM

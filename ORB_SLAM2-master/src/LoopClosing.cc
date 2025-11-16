@@ -54,12 +54,16 @@ void LoopClosing::SetLocalMapper(LocalMapping *pLocalMapper)
 }
 
 
+// LoopClosing线程主函数
 void LoopClosing::Run()
 {
     mbFinished =false;
 
+// 死循环
     while(1)
     {
+
+// 判断是否收到关键帧
         // Check if there are keyframes in the queue
         if(CheckNewKeyFrames())
         {
@@ -76,11 +80,13 @@ void LoopClosing::Run()
             }
         }       
 
+// 查看是否有外部线程请求复位当前线程
         ResetIfRequested();
 
         if(CheckFinish())
             break;
 
+// 线程暂停5毫秒，5毫秒后结束再从whlie(1) 循环首部运行
         usleep(5000);
     }
 

@@ -390,6 +390,7 @@ void KeyFrame::EraseChild(KeyFrame *pKF)
     mspChildrens.erase(pKF);
 }
 
+// 关键帧加锁
 void KeyFrame::ChangeParent(KeyFrame *pKF)
 {
     unique_lock<mutex> lockCon(mMutexConnections);
@@ -403,6 +404,7 @@ set<KeyFrame*> KeyFrame::GetChilds()
     return mspChildrens;
 }
 
+// 关键帧加锁
 KeyFrame* KeyFrame::GetParent()
 {
     unique_lock<mutex> lockCon(mMutexConnections);
@@ -553,13 +555,17 @@ bool KeyFrame::isBad()
 void KeyFrame::EraseConnection(KeyFrame* pKF)
 {
     bool bUpdate = false;
-    {
+    {   
+
+// 第一部分加锁
+// 这个锁是一个局部变量，锁的有效性{}，出了{}就释放锁了
         unique_lock<mutex> lock(mMutexConnections);
         if(mConnectedKeyFrameWeights.count(pKF))
         {
             mConnectedKeyFrameWeights.erase(pKF);
             bUpdate=true;
         }
+// 程序运行到这里就释放锁，后面的操作不需要抢到锁就能执行
     }
 
     if(bUpdate)
