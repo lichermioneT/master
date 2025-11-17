@@ -82,7 +82,55 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 
 
+![image-20251117084400383](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117084400383.png)
 
+
+
+
+
+![image-20251117085004304](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117085004304.png)
+
+
+
+![image-20251117085249470](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117085249470.png)
+
+
+
+![image-20251117085632988](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117085632988.png)
+
+
+
+![image-20251117085912835](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117085912835.png)
+
+
+
+![image-20251117090037337](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117090037337.png)
+
+
+
+**非极大值抑制**
+
+![image-20251117091424312](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117091424312.png)
+
+
+
+
+
+![image-20251117091626739](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117091626739.png)
+
+
+
+
+
+
+
+**RRBslam: 特征点，关键帧。**
+
+**MapPoint  KeyFrames**
+
+
+
+![image-20251117095833908](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117095833908.png)
 
 
 

@@ -86,7 +86,7 @@ public:
     static long unsigned int nNextId;
     long int mnFirstKFid;
     long int mnFirstFrame;
-    int nObs;
+    int nObs;                          // 多少个相机
 
     // Variables used by the tracking
     float mTrackProjX;
@@ -115,10 +115,10 @@ public:
 protected:    
 
      // Position in absolute coordinates
-     cv::Mat mWorldPos;
+     cv::Mat mWorldPos;                                        // 地图点的世界坐标  set/get函数操作属性
 
      // Keyframes observing the point and associated index in keyframe
-     std::map<KeyFrame*,size_t> mObservations;
+     std::map<KeyFrame*,size_t> mObservations;                 // 当前地图点在某KeyFrame中的索引 
 
      // Mean viewing direction
      cv::Mat mNormalVector;
