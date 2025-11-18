@@ -122,7 +122,7 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 
 
-
+## MapPoint
 
 **RRBslam: 特征点，关键帧。**
 
@@ -130,7 +130,79 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 
 
+![image-20251118195021798](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118195021798.png)
+
+![image-20251118195001451](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118195001451.png)
+
+![image-20251118103653349](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118103653349.png)
+
 ![image-20251117095833908](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251117095833908.png)
+
+
+
+**观测尺度**
+
+
+
+![image-20251118105831304](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118105831304.png)
+
+
+
+![image-20251118110024446](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118110024446.png)
+
+
+
+
+
+![image-20251118202130295](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118202130295.png)
+
+
+
+![image-20251118202418175](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118202418175.png)
+
+
+
+**t特征描述点3d -2d的匹配**
+
+**什么时候替换和删除**
+
+![image-20251118204811524](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118204811524.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

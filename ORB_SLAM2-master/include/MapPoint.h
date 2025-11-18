@@ -42,42 +42,44 @@ public:
     MapPoint(const cv::Mat &Pos, KeyFrame* pRefKF, Map* pMap);
     MapPoint(const cv::Mat &Pos,  Map* pMap, Frame* pFrame, const int &idxF);
 
-    void SetWorldPos(const cv::Mat &Pos);
-    cv::Mat GetWorldPos();
+    void SetWorldPos(const cv::Mat &Pos);         // mworldpos的set方法
+    cv::Mat GetWorldPos();                        // mworldPos的get方法
 
-    cv::Mat GetNormal();
+    cv::Mat GetNormal();                          // mNormalVector的get方法
     KeyFrame* GetReferenceKeyFrame();
 
     std::map<KeyFrame*,size_t> GetObservations();
-    int Observations();
+    int Observations();                                 // nobs的get方法 单目，双目相机的操作
+                                                        
+                                                       // observation的操作
+    void AddObservation(KeyFrame* pKF,size_t idx);     // 添加当前地图点对某帧KeyFrame的观测
+    void EraseObservation(KeyFrame* pKF);              // 删除当前地图点对某帧KeyFrame的观测
 
-    void AddObservation(KeyFrame* pKF,size_t idx);
-    void EraseObservation(KeyFrame* pKF);
+    int GetIndexInKeyFrame(KeyFrame* pKF);             // 查询当前地图在某KeyFrame中的索引
+    bool IsInKeyFrame(KeyFrame* pKF);                  // 查询当前地图点是否在某keyFrame中
 
-    int GetIndexInKeyFrame(KeyFrame* pKF);
-    bool IsInKeyFrame(KeyFrame* pKF);
+    void SetBadFlag();                                // 删除当前地图点
+    bool isBad();                                     // 查询当前地图是否被删除(本质就是查询mbBad)
 
-    void SetBadFlag();
-    bool isBad();
-
-    void Replace(MapPoint* pMP);    
-    MapPoint* GetReplaced();
+    void Replace(MapPoint* pMP);                      // 使用地图点Pmp替换当前地图点
+    MapPoint* GetReplaced();                         // 用来替换当前地图点的新地图点
 
     void IncreaseVisible(int n=1);
     void IncreaseFound(int n=1);
     float GetFoundRatio();
-    inline int GetFound(){
+    inline int GetFound()
+    {
         return mnFound;
     }
 
-    void ComputeDistinctiveDescriptors();
+    void ComputeDistinctiveDescriptors();              // 计算Descriptor
 
-    cv::Mat GetDescriptor();
+    cv::Mat GetDescriptor();                           // mDescriptor的get方法
 
-    void UpdateNormalAndDepth();
+    void UpdateNormalAndDepth();                       // 更新平均观测 -- 距离和方向
 
-    float GetMinDistanceInvariance();
-    float GetMaxDistanceInvariance();
+    float GetMinDistanceInvariance();                  // mfMinDistance 的get方法
+    float GetMaxDistanceInvariance();                  // mNormalVector 的get方法
     int PredictScale(const float &currentDist, KeyFrame*pKF);
     int PredictScale(const float &currentDist, Frame* pF);
 
@@ -86,7 +88,7 @@ public:
     static long unsigned int nNextId;
     long int mnFirstKFid;
     long int mnFirstFrame;
-    int nObs;                          // 多少个相机
+    int nObs;                                        // 多少个相机
 
     // Variables used by the tracking
     float mTrackProjX;
@@ -115,16 +117,16 @@ public:
 protected:    
 
      // Position in absolute coordinates
-     cv::Mat mWorldPos;                                        // 地图点的世界坐标  set/get函数操作属性
+     cv::Mat mWorldPos;                                        // 地图点的世界坐标  set/get函数操作属性  为了两个之间加锁方法
 
      // Keyframes observing the point and associated index in keyframe
-     std::map<KeyFrame*,size_t> mObservations;                 // 当前地图点在某KeyFrame中的索引 
+     std::map<KeyFrame*,size_t> mObservations;                 // 当前地图点在某KeyFrame中的索引   KeyFrame是关键帧，
 
      // Mean viewing direction
-     cv::Mat mNormalVector;
+     cv::Mat mNormalVector;                                   // 平均观测方向
 
      // Best descriptor to fast matching
-     cv::Mat mDescriptor;
+     cv::Mat mDescriptor;                                    // 当前关键 点的特征描述子(所有描述子的中位数)
 
      // Reference KeyFrame
      KeyFrame* mpRefKF;
@@ -134,16 +136,16 @@ protected:
      int mnFound;
 
      // Bad flag (we do not currently erase MapPoint from memory)
-     bool mbBad;
+     bool mbBad;                                           // 坏点标记
      MapPoint* mpReplaced;
 
      // Scale invariance distances
-     float mfMinDistance;
-     float mfMaxDistance;
+     float mfMinDistance;                                    // 平均观测距离的下限
+     float mfMaxDistance;                                    // 平均观测距离的上限
 
      Map* mpMap;
 
-     std::mutex mMutexPos;
+     std::mutex mMutexPos;                     // mWorldPos的锁
      std::mutex mMutexFeatures;
 };
 

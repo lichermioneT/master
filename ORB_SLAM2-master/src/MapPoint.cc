@@ -95,24 +95,31 @@ KeyFrame* MapPoint::GetReferenceKeyFrame()
     return mpRefKF;
 }
 
+// 同时维护mObservation和nObs
 void MapPoint::AddObservation(KeyFrame* pKF, size_t idx)
 {
+// 向参考帧pKF中添加对本地图点的观测，本地图点在pKF中的索引位idx
     unique_lock<mutex> lock(mMutexFeatures);
+// 如果已经添加过观测，返回
     if(mObservations.count(pKF))
         return;
+// 如果没有添加过观测，记录下能观测到该MapPoint的KF和该MapPoint在KF中的索引。
     mObservations[pKF]=idx;
 
+// 根据观测形式是单目还是双目 更新观测计算变量nobs
     if(pKF->mvuRight[idx]>=0)
         nObs+=2;
     else
         nObs++;
 }
 
+// 从参考帧pKF中移除本地图点
 void MapPoint::EraseObservation(KeyFrame* pKF)
 {
     bool bBad=false;
     {
         unique_lock<mutex> lock(mMutexFeatures);
+// 查找这个要删除的观测，根据单目和双目类型的不同， 从其中删除当前地图点的被 观测次数。
         if(mObservations.count(pKF))
         {
             int idx = mObservations[pKF];
@@ -122,16 +129,18 @@ void MapPoint::EraseObservation(KeyFrame* pKF)
                 nObs--;
 
             mObservations.erase(pKF);
-
+// 如果该KeyFrame是参考帧， 该Frame被删除后重新指定RefFrame
             if(mpRefKF==pKF)
                 mpRefKF=mObservations.begin()->first;
 
+// 当观测到该点的相机树少于2，丢弃该点(至少两个观测才能三角化)
             // If only 2 observations or less, discard point
             if(nObs<=2)
                 bBad=true;
         }
     }
 
+// 告知可以观测到该MapPoint的Frame,该MapPont已被删除了
     if(bBad)
         SetBadFlag();
 }
@@ -148,22 +157,26 @@ int MapPoint::Observations()
     return nObs;
 }
 
+// 删除地图点---先标记，后删除。
 void MapPoint::SetBadFlag()
 {
     map<KeyFrame*,size_t> obs;
     {
         unique_lock<mutex> lock1(mMutexFeatures);
         unique_lock<mutex> lock2(mMutexPos);
-        mbBad=true;
+        mbBad=true;                                        // 先标记mbBad,逻辑上删除当前地图点
         obs = mObservations;
         mObservations.clear();
     }
+
+// 删除关键帧对当前地图点的观测
     for(map<KeyFrame*,size_t>::iterator mit=obs.begin(), mend=obs.end(); mit!=mend; mit++)
     {
         KeyFrame* pKF = mit->first;
         pKF->EraseMapPointMatch(mit->second);
     }
 
+// 在地图类上注册 删除当前地图点，这里会发生内存泄漏
     mpMap->EraseMapPoint(this);
 }
 
@@ -174,11 +187,14 @@ MapPoint* MapPoint::GetReplaced()
     return mpReplaced;
 }
 
+// 地图点替换----先标记---然后替换
 void MapPoint::Replace(MapPoint* pMP)
 {
+// 如果是同一地图点就跳过
     if(pMP->mnId==this->mnId)
         return;
 
+// step1 逻辑上删除当前地图点
     int nvisible, nfound;
     map<KeyFrame*,size_t> obs;
     {
@@ -192,6 +208,7 @@ void MapPoint::Replace(MapPoint* pMP)
         mpReplaced = pMP;
     }
 
+// step2 将当 地图点的数据叠加到新地图点上
     for(map<KeyFrame*,size_t>::iterator mit=obs.begin(), mend=obs.end(); mit!=mend; mit++)
     {
         // Replace measurement in keyframe
@@ -211,6 +228,7 @@ void MapPoint::Replace(MapPoint* pMP)
     pMP->IncreaseVisible(nvisible);
     pMP->ComputeDistinctiveDescriptors();
 
+// 删除当前地图点
     mpMap->EraseMapPoint(this);
 }
 
@@ -327,8 +345,11 @@ bool MapPoint::IsInKeyFrame(KeyFrame *pKF)
     return (mObservations.count(pKF));
 }
 
+// 只有地图点本身或者相关帧对该地图的观测发生变化，就调用该函数
+// 更新观测尺度和方向信息
 void MapPoint::UpdateNormalAndDepth()
 {
+// step1.获取地图点相关信息
     map<KeyFrame*,size_t> observations;
     KeyFrame* pRefKF;
     cv::Mat Pos;
@@ -345,6 +366,7 @@ void MapPoint::UpdateNormalAndDepth()
     if(observations.empty())
         return;
 
+// step2.根据观测到 地图点的关键帧取平均 计算平均观测方向
     cv::Mat normal = cv::Mat::zeros(3,1,CV_32F);
     int n=0;
     for(map<KeyFrame*,size_t>::iterator mit=observations.begin(), mend=observations.end(); mit!=mend; mit++)
@@ -356,6 +378,8 @@ void MapPoint::UpdateNormalAndDepth()
         n++;
     }
 
+// step3.根据参考帧计算平均观测距离
+// 计算层级
     cv::Mat PC = Pos - pRefKF->GetCameraCenter();
     const float dist = cv::norm(PC);
     const int level = pRefKF->mvKeysUn[observations[pRefKF]].octave;
