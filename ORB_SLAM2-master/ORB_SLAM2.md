@@ -170,33 +170,35 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 
 
+## KeyFrame
+
+![image-20251119085420317](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251119085420317.png)
 
 
 
 
 
+![image-20251119085710730](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251119085710730.png)
+
+
+
+![image-20251119090943872](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251119090943872.png)
+
+
+
+**双目时差公式**
+
+![image-20251119091326279](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251119091326279.png)
 
 
 
 
 
+![image-20251119094053438](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251119094053438.png)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![image-20251119094729944](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251119094729944.png)
 
 
 

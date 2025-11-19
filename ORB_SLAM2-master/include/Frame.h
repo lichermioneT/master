@@ -115,7 +115,7 @@ public:
     ORBVocabulary* mpORBvocabulary;
 
     // Feature extractor. The right is used only in the stereo case.
-    ORBextractor* mpORBextractorLeft, *mpORBextractorRight;
+    ORBextractor* mpORBextractorLeft, *mpORBextractorRight;  // 左右目图像的特征点提取器
 
     // Frame timestamp.
     double mTimeStamp;
@@ -146,18 +146,19 @@ public:
     // Vector of keypoints (original for visualization) and undistorted (actually used by the system).
     // In the stereo case, mvKeysUn is redundant as images must be rectified.
     // In the RGB-D case, RGB images can be distorted.
-    std::vector<cv::KeyPoint> mvKeys, mvKeysRight;
-    std::vector<cv::KeyPoint> mvKeysUn;
+    std::vector<cv::KeyPoint> mvKeys, mvKeysRight;  // 畸变矫正前的左、右目特征点。
+    std::vector<cv::KeyPoint> mvKeysUn;             // 畸变矫正后的左目特征点
 
     // Corresponding stereo coordinate and depth for each keypoint.
     // "Monocular" keypoints have a negative value.
-    std::vector<float> mvuRight;
-    std::vector<float> mvDepth;
+    std::vector<float> mvuRight;                  // 左目特征点在右目中匹配特征点的横坐标。
+    std::vector<float> mvDepth;                   // 特征点深度
 
     // Bag of Words Vector structures.
     DBoW2::BowVector mBowVec;
     DBoW2::FeatureVector mFeatVec;
 
+// 左右目图像特征点描述子
     // ORB descriptor, each row associated to a keypoint.
     cv::Mat mDescriptors, mDescriptorsRight;
 

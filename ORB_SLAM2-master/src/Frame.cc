@@ -147,6 +147,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
     mvpMapPoints = vector<MapPoint*>(N,static_cast<MapPoint*>(NULL));
     mvbOutlier = vector<bool>(N,false);
 
+// 第一次调用Frame构造函数时，为所有的static变量赋值
     // This is done only for the first Frame (or after a change in the calibration)
     if(mbInitialComputations)
     {
@@ -162,7 +163,7 @@ Frame::Frame(const cv::Mat &imGray, const cv::Mat &imDepth, const double &timeSt
         invfx = 1.0f/fx;
         invfy = 1.0f/fy;
 
-        mbInitialComputations=false;
+        mbInitialComputations=false;  // 赋值后，
     }
 
     mb = mbf/fx;
@@ -233,6 +234,7 @@ Frame::Frame(const cv::Mat &imGray, const double &timeStamp, ORBextractor* extra
 // 有用的数据存放到
 // mGrid[nGridPosx][nGridPosy]
 // mGrid[][] 里面存放的是有效的数据
+// 数据匹配的
 void Frame::AssignFeaturesToGrid()
 {
     int nReserve = 0.5f*N/(FRAME_GRID_COLS*FRAME_GRID_ROWS);  // int nReserve =  0.5f*N/(64*48)   N = Number of KeyPoints.特征点的个数 64*48网格总数 3072个格子
@@ -432,6 +434,7 @@ void Frame::ComputeBoW()
 
 // 主要是处理畸变的数据
 // 太要命了，考数学f****k
+// 处理畸变的数据
 void Frame::UndistortKeyPoints()
 {
     if(mDistCoef.at<float>(0)==0.0)  // cv::Mat mDistCoef;
@@ -551,6 +554,7 @@ void Frame::ComputeStereoMatches()
         if(maxU<0)
             continue;
 
+// step1.粗匹配，根据特征点描述子和金字塔层级进行粗匹配
         int bestDist = ORBmatcher::TH_HIGH;
         size_t bestIdxR = 0;
 
@@ -580,6 +584,7 @@ void Frame::ComputeStereoMatches()
             }
         }
 
+// step2.精匹配，滑动窗口匹配，根据周围5*5窗口寻找精确匹配
         // Subpixel match by correlation
         if(bestDist<thOrbDist)
         {
@@ -626,6 +631,7 @@ void Frame::ComputeStereoMatches()
             if(bestincR==-L || bestincR==L)
                 continue;
 
+// step3.亚像素差值：将特征点匹配距离拟合成二次曲线，寻找二次曲线最低点， 作为 最优匹配点坐标。
             // Sub-pixel match (Parabola fitting)
             const float dist1 = vDists[L+bestincR-1];
             const float dist2 = vDists[L+bestincR];
@@ -636,6 +642,7 @@ void Frame::ComputeStereoMatches()
             if(deltaR<-1 || deltaR>1)
                 continue;
 
+// step4.记录特征点的右目和深度信息
             // Re-scaled coordinate
             float bestuR = mvScaleFactors[kpL.octave]*((float)scaleduR0+(float)bestincR+deltaR);
 
@@ -655,6 +662,7 @@ void Frame::ComputeStereoMatches()
         }
     }
 
+// step5:删除离群点，匹配距离大于平均距离2.1倍 视为误匹配的
     sort(vDistIdx.begin(),vDistIdx.end());
     const float median = vDistIdx[vDistIdx.size()/2].first;
     const float thDist = 1.5f*1.4f*median;
@@ -674,6 +682,7 @@ void Frame::ComputeStereoMatches()
 
 void Frame::ComputeStereoFromRGBD(const cv::Mat &imDepth)
 {
+// 初始化 右目和深度信息
     mvuRight = vector<float>(N,-1);
     mvDepth = vector<float>(N,-1);
 
