@@ -2,8 +2,8 @@
 #include <iomanip>
 using namespace std;
 
-#include <Eigen/Core>
-#include <Eigen/Geometry>
+#include <eigen3/Eigen/Core>
+#include <eigen3/Eigen/Geometry>
 using namespace Eigen;
 
 #include <pangolin/pangolin.h>

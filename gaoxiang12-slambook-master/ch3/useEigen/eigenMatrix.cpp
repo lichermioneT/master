@@ -1,10 +1,11 @@
 #include <iostream>
 using namespace std;
 #include <ctime>
+
 // Eigen 部分
-#include <Eigen/Core>
+#include <eigen3/Eigen/Core>
 // 稠密矩阵的代数运算（逆，特征值等）
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 
 #define MATRIX_SIZE 50
 
@@ -39,7 +40,8 @@ int main( int argc, char** argv )
     cout << matrix_23 << endl;
 
     // 用()访问矩阵中的元素
-    for (int i=0; i<2; i++) {
+    for (int i=0; i<2; i++) 
+    {
         for (int j=0; j<3; j++)
             cout<<matrix_23(i,j)<<"\t";
         cout<<endl;

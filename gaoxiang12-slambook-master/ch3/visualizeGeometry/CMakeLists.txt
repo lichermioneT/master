@@ -7,8 +7,11 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 include_directories( "/usr/include/eigen3" )
 
 # 添加Pangolin依赖
-find_package( Pangolin )
+find_package( Pangolin )                         # 找到了返回头文件和库文件
 include_directories( ${Pangolin_INCLUDE_DIRS} )
 
 add_executable( visualizeGeometry visualizeGeometry.cpp )
 target_link_libraries( visualizeGeometry ${Pangolin_LIBRARIES} )
+
+# find_package(Eigen3) 为什么Eigen3
+# locate eigen | grep cmake

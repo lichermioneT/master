@@ -2,9 +2,9 @@
 #include <cmath>
 using namespace std;
 
-#include <Eigen/Core>
+#include <eigen3/Eigen/Core>
 // Eigen 几何模块
-#include <Eigen/Geometry>
+#include <eigen3/Eigen/Geometry>
 
 /****************************
 * 本程序演示了 Eigen 几何模块的使用方法
