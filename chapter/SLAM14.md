@@ -10,25 +10,25 @@
 
 **1引言**
 
-![image-20251126185944433](/home/lic/.config/Typora/typora-user-images/image-20251126185944433.png)
+![image-20251126185944433](./picture/image-20251126185944433.png)
 
 
 
-![image-20251126190106813](/home/lic/.config/Typora/typora-user-images/image-20251126190106813.png)
+![image-20251126190106813](./picture/image-20251126190106813.png)
 
 
 
-![image-20251126190146892](/home/lic/.config/Typora/typora-user-images/image-20251126190146892.png)
+![image-20251126190146892](./picture/image-20251126190146892.png)
 
 
 
 
 
-![image-20251126190302148](/home/lic/.config/Typora/typora-user-images/image-20251126190302148.png)
+![image-20251126190302148](./picture/image-20251126190302148.png)
 
 
 
-![image-20251126190620778](/home/lic/.config/Typora/typora-user-images/image-20251126190620778.png)
+![image-20251126190620778](./picture/image-20251126190620778.png)
 
 ### 第一部分:数学基础
 
@@ -42,73 +42,73 @@
 
 **内外兼修**
 
-![image-20251126191003144](/home/lic/.config/Typora/typora-user-images/image-20251126191003144.png)
+![image-20251126191003144](./picture/image-20251126191003144.png)
 
 
 
 **传感器的配置**
 
-![image-20251126191105911](/home/lic/.config/Typora/typora-user-images/image-20251126191105911.png)
+![image-20251126191105911](./picture/image-20251126191105911.png)
 
 
 
 **环境中配置传感器**
 
-![image-20251126191209607](/home/lic/.config/Typora/typora-user-images/image-20251126191209607.png)
+![image-20251126191209607](./picture/image-20251126191209607.png)
 
 
 
 **相机分类**
 
-![image-20251126191355624](/home/lic/.config/Typora/typora-user-images/image-20251126191355624.png)
+![image-20251126191355624](./picture/image-20251126191355624.png)
 
 
 
 **相纸之间的差距**
 
-![image-20251126191444190](/home/lic/.config/Typora/typora-user-images/image-20251126191444190.png)
+![image-20251126191444190](./picture/image-20251126191444190.png)
 
 
 
 **单目相机的缺点**
 
-![image-20251126191540293](/home/lic/.config/Typora/typora-user-images/image-20251126191540293.png)
+![image-20251126191540293](./picture/image-20251126191540293.png)
 
 
 
 **单目相机**
 
-![image-20251126191634058](/home/lic/.config/Typora/typora-user-images/image-20251126191634058.png)
+![image-20251126191634058](./picture/image-20251126191634058.png)
 
 
 
 **双面相机**
 
-![image-20251126191727582](/home/lic/.config/Typora/typora-user-images/image-20251126191727582.png)
+![image-20251126191727582](./picture/image-20251126191727582.png)
 
 
 
 **深度相机**
 
-![image-20251126191820635](/home/lic/.config/Typora/typora-user-images/image-20251126191820635.png)
+![image-20251126191820635](./picture/image-20251126191820635.png)
 
 
 
 **共同点**
 
-![image-20251126191923588](/home/lic/.config/Typora/typora-user-images/image-20251126191923588.png)
+![image-20251126191923588](./picture/image-20251126191923588.png)
 
 
 
 **视觉SLAM的做法**
 
-![image-20251126192000302](/home/lic/.config/Typora/typora-user-images/image-20251126192000302.png)
+![image-20251126192000302](./picture/image-20251126192000302.png)
 
 
 
 
 
-![image-20251126192240978](/home/lic/.config/Typora/typora-user-images/image-20251126192240978.png)
+![image-20251126192240978](./picture/image-20251126192240978.png)
 
 
 
@@ -132,11 +132,11 @@
 
 
 
-![image-20251126192329188](/home/lic/.config/Typora/typora-user-images/image-20251126192329188.png)
+![image-20251126192329188](./picture/image-20251126192329188.png)
 
-![image-20251126192400203](/home/lic/.config/Typora/typora-user-images/image-20251126192400203.png)
+![image-20251126192400203](./picture/image-20251126192400203.png)
 
-![image-20251126192416878](/home/lic/.config/Typora/typora-user-images/image-20251126192416878.png)
+![image-20251126192416878](./picture/image-20251126192416878.png)
 
 
 
@@ -144,11 +144,11 @@
 
 **SLAM数学问题**
 
-![image-20251126192537023](/home/lic/.config/Typora/typora-user-images/image-20251126192537023.png)
+![image-20251126192537023](./picture/image-20251126192537023.png)
 
-![image-20251126192606690](/home/lic/.config/Typora/typora-user-images/image-20251126192606690.png)
+![image-20251126192606690](./picture/image-20251126192606690.png)
 
-![image-20251126192725493](/home/lic/.config/Typora/typora-user-images/image-20251126192725493.png)
+![image-20251126192725493](./picture/image-20251126192725493.png)
 
 
 
@@ -357,19 +357,19 @@ cmake .. -DOpenCV_DIR=/usr/local/lib/cmake/opencv4
 
 ## Chapter3
 
-## 3.1点，向量和坐标，旋转矩阵。
+### 3.1点，向量和坐标，旋转矩阵。
 
 **点**
 
-![image-20251127193540262](/home/lic/.config/Typora/typora-user-images/image-20251127193540262.png)
+![image-20251127193540262](./picture/image-20251127193540262.png)
 
 **坐标系**
 
-![image-20251127193709934](/home/lic/.config/Typora/typora-user-images/image-20251127193709934.png)
+![image-20251127193709934](./picture/image-20251127193709934.png)
 
 **向量的运算**
 
-![image-20251127193935020](/home/lic/.config/Typora/typora-user-images/image-20251127193935020.png)
+![image-20251127193935020](./picture/image-20251127193935020.png)
 
 **反对称矩阵的**
 
@@ -383,7 +383,7 @@ cmake .. -DOpenCV_DIR=/usr/local/lib/cmake/opencv4
 
 **移动的机器人**
 
-![image-20251127194359447](/home/lic/.config/Typora/typora-user-images/image-20251127194359447.png)
+![image-20251127194359447](./picture/image-20251127194359447.png)
 
 
 
@@ -391,23 +391,23 @@ cmake .. -DOpenCV_DIR=/usr/local/lib/cmake/opencv4
 
 **平移是一个向量，旋转是一个矩阵的**
 
-![image-20251127194601260](/home/lic/.config/Typora/typora-user-images/image-20251127194601260.png)
+![image-20251127194601260](./picture/image-20251127194601260.png)
 
 
 
 **旋转**
 
-![image-20251127194754493](/home/lic/.config/Typora/typora-user-images/image-20251127194754493.png)
+![image-20251127194754493](./picture/image-20251127194754493.png)
 
 **标准正交基**
 
-![image-20251127194921318](/home/lic/.config/Typora/typora-user-images/image-20251127194921318.png)
+![image-20251127194921318](./picture/image-20251127194921318.png)
 
 **旋转矩阵**
 
-![image-20251127195311623](/home/lic/.config/Typora/typora-user-images/image-20251127195311623.png)
+![image-20251127195311623](./picture/image-20251127195311623.png)
 
-![image-20251127195352732](/home/lic/.config/Typora/typora-user-images/image-20251127195352732.png)
+![image-20251127195352732](./picture/image-20251127195352732.png)
 
 **旋转矩阵的性质**
 
@@ -415,11 +415,11 @@ cmake .. -DOpenCV_DIR=/usr/local/lib/cmake/opencv4
 
 
 
-![image-20251127195745623](/home/lic/.config/Typora/typora-user-images/image-20251127195745623.png)
+![image-20251127195745623](./picture/image-20251127195745623.png)
 
-![image-20251127200146145](/home/lic/.config/Typora/typora-user-images/image-20251127200146145.png)
+![image-20251127200146145](./picture/image-20251127200146145.png)
 
-![image-20251127200223882](/home/lic/.config/Typora/typora-user-images/image-20251127200223882.png)
+![image-20251127200223882](./picture/image-20251127200223882.png)
 
 
 
@@ -427,29 +427,27 @@ cmake .. -DOpenCV_DIR=/usr/local/lib/cmake/opencv4
 
 
 
-![image-20251127200837276](/home/lic/.config/Typora/typora-user-images/image-20251127200837276.png)
+![image-20251127200837276](./picture/image-20251127200837276.png)
 
 
 
 **Pr = Rrw * Pw**
 
-## 3.2实践部分
+### 3.2实践部分
 
-
-
-## 3.3旋转向量，欧拉角
+### 3.3旋转向量，欧拉角
 
 **角轴**
 
 
 
-![image-20251127210351543](/home/lic/.config/Typora/typora-user-images/image-20251127210351543.png)
+![image-20251127210351543](./picture/image-20251127210351543.png)
 
 
 
 **角轴的特点**
 
-![image-20251127210635636](/home/lic/.config/Typora/typora-user-images/image-20251127210635636.png)
+![image-20251127210635636](./picture/image-20251127210635636.png)
 
 **角轴和旋转矩阵的转换**
 
@@ -457,7 +455,7 @@ cmake .. -DOpenCV_DIR=/usr/local/lib/cmake/opencv4
 
 **欧拉角**
 
-![image-20251127210911595](/home/lic/.config/Typora/typora-user-images/image-20251127210911595.png)
+![image-20251127210911595](./picture/image-20251127210911595.png)
 
 **分解旋转**
 
@@ -467,57 +465,211 @@ cmake .. -DOpenCV_DIR=/usr/local/lib/cmake/opencv4
 
 
 
-![image-20251127211359219](/home/lic/.config/Typora/typora-user-images/image-20251127211359219.png)
+![image-20251127211359219](./picture/image-20251127211359219.png)
+
+### 3.4四元数
 
 
 
-## 3.4四元数
-
-
-
-![image-20251127211444800](/home/lic/.config/Typora/typora-user-images/image-20251127211444800.png)
+![image-20251127211444800](./picture/image-20251127211444800.png)
 
 
 
 **四元数的运算**
 
-![image-20251127211728843](/home/lic/.config/Typora/typora-user-images/image-20251127211728843.png)
+![image-20251127211728843](./picture/image-20251127211728843.png)
 
 
 
 **四元素的旋转**
 
-![image-20251127211911957](/home/lic/.config/Typora/typora-user-images/image-20251127211911957.png)
+![image-20251127211911957](./picture/image-20251127211911957.png)
 
 
 
 **四元数的优点：**
 
-![image-20251127212014956](/home/lic/.config/Typora/typora-user-images/image-20251127212014956.png)
+![image-20251127212014956](./picture/image-20251127212014956.png)
+
+### 3.5相似，放射,
+
+### 3.6eigen矩阵
+
+
+
+## Chapter4
+
+**李群与李代数**
+
+![image-20251128182930040](./picture/image-20251128182930040.png)
+
+![image-20251128182956969](./picture/image-20251128182956969.png)
+
+
+
+### 4.1李群李代数基础
+
+![image-20251128183149119](./picture/image-20251128183149119.png)
+
+
+
+**什么是群**
+
+![image-20251128183234664](./picture/image-20251128183234664.png)
+
+**一般的群**
+
+![image-20251128183849858](./picture/image-20251128183849858.png)
+
+**群的优点**
+
+![image-20251128183954319](./picture/image-20251128183954319.png)
+
+
+
+**李代数**
+
+![image-20251128184657215](./picture/image-20251128184657215.png)
+
+![image-20251128184812378](./picture/image-20251128184812378.png)
+
+**反对称矩阵**
+
+![image-20251128184937627](./picture/image-20251128184937627.png)
+
+
+
+**泰勒展开了**
+
+![image-20251128185105791](./picture/image-20251128185105791.png)
 
 
 
 
 
+![image-20251128185410477](./picture/image-20251128185410477.png)
+
+
+
+**李代数的定义：**
+
+![image-20251128185530123](./picture/image-20251128185530123.png)
+
+
+
+ 
+
+![image-20251128190354127](./picture/image-20251128190354127.png)
+
+
+
+![image-20251128190504981](./picture/image-20251128190504981.png)
+
+![image-20251128190731327](./picture/image-20251128190731327.png)
+
+
+
+### 4.2指数映射和对数映射
+
+**李群和李代数的映射**
+
+![image-20251128190942758](./picture/image-20251128190942758.png)
+
+**化简得到的**
+
+![image-20251128191204866](./picture/image-20251128191204866.png)
 
 
 
 
 
+![image-20251128191303098](./picture/image-20251128191303098.png)
+
+
+
+![image-20251128191502256](./picture/image-20251128191502256.png)
+
+
+
+![image-20251128191656651](./picture/image-20251128191656651.png)
+
+
+
+### 4.3李代数求导与扰动模型
+
+![image-20251128191911616](./picture/image-20251128191911616.png)
+
+
+
+![image-20251128192041664](./picture/image-20251128192041664.png)
+
+
+
+![image-20251128192212983](./picture/image-20251128192212983.png)
+
+
+
+![image-20251128192427946](./picture/image-20251128192427946.png)
+
+
+
+**旋转**
+
+![image-20251128192826736](./picture/image-20251128192826736.png)
 
 
 
 
 
+![image-20251128193111096](./picture/image-20251128193111096.png)
+
+
+
+![image-20251128193136634](./picture/image-20251128193136634.png)
+
+
+
+![image-20251128193227980](./picture/image-20251128193227980.png)
+
+
+
+![image-20251128193318836](./picture/image-20251128193318836.png)
+
+
+
+**扰动和旋转的意义**
+
+
+
+## Chapter5
+
+**复习**
+
+![image-20251201102603884](picture/image-20251201102603884.png)
+
+
+
+### 5.1相机模型
+
+![image-20251201102641978](picture/image-20251201102641978.png)
+
+
+
+**建模**
+
+![image-20251201102730716](picture/image-20251201102730716.png)
+
+**负号  东西翻转到前面来**
+
+**像素  图像坐标和实际坐标的变化**
+
+![image-20251201103422545](picture/image-20251201103422545.png)
 
 
 
 
 
-
-
-
-
+![image-20251201103822573](picture/image-20251201103822573.png)
 
 
 
