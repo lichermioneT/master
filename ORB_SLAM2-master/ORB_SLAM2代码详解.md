@@ -232,7 +232,13 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 **MapPoint  KeyFrames**
 
+![image-20251225152736695](picture/image-20251225152736695.png)
 
+**特征点三角化地图点。**
+
+**特征点不一定地图点。**
+
+**地图的特征描述子**
 
 ![image-20251118195021798](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118195021798.png)
 
@@ -250,7 +256,7 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 
 
-
+![image-20251225153452674](picture/image-20251225153452674.png)
 
 
 
@@ -258,9 +264,15 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 **观测尺度**
 
-
+**近大远小。**
 
 ![image-20251118105831304](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118105831304.png)
+
+![image-20251225153700234](picture/image-20251225153700234.png)
+
+
+
+
 
 
 
@@ -272,9 +284,13 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 ![image-20251118202130295](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118202130295.png)
 
+![image-20251225155255021](picture/image-20251225155255021.png)
+
 
 
 ![image-20251118202418175](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251118202418175.png)
+
+
 
 
 
@@ -286,21 +302,43 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 
 
+![image-20251225155652247](picture/image-20251225155652247.png)
 
 
-## KeyFrame
+
+**特征点**
+
+**关键帧**
+
+
+
+## 帧Frame
+
+![image-20251225160741330](picture/image-20251225160741330.png)
+
+![image-20251225193959324](picture/image-20251225193959324.png)
+
+
+
+
 
 ![image-20251119085420317](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251119085420317.png)
 
 
 
+**对象的属性**
 
+**静态属性，全员共享。**
 
 ![image-20251119085710730](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251119085710730.png)
+
+![image-20251225194456432](picture/image-20251225194456432.png)
 
 
 
 ![image-20251119090943872](C:\Users\LIC\AppData\Roaming\Typora\typora-user-images\image-20251119090943872.png)
+
+![image-20251225194747885](picture/image-20251225194747885.png)
 
 
 
@@ -320,7 +358,7 @@ ORB-SLAM2中的变量遵循一套命名规则：
 
 
 
-是多少打发斯蒂芬暗室逢灯
+
 
 
 
