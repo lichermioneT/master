@@ -5,6 +5,8 @@ lic@lic:~/Desktop/orb_slam2/master$
 lic@lic:~/Desktop/orb_slam2/master$ 
 lic@lic:~/Desktop/orb_slam2/master$ 
 lic@lic:~/Desktop/orb_slam2/master$ 
+lic@lic:~/Desktop/orb_slam2/master$ 
+lic@lic:~/Desktop/orb_slam2/master$ 
 lic@lic:~/Desktop/orb_slam2/master$ git remote -v
 origin	git@gitee.com:lichermione/master.git (fetch)
 origin	git@gitee.com:lichermione/master.git (push)
