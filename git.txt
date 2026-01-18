@@ -15,4 +15,4 @@ origin	git@gitee.com:lichermione/master.git (fetch)
 origin	git@gitee.com:lichermione/master.git (push)
 origin	git@github.com:lichermioneT/master.git (push)
 lic@lic:~/Desktop/orb_slam2/master$ 
-
+cat  ~/.ssh/id_rsa.pub 

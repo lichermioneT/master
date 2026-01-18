@@ -297,7 +297,7 @@ public:
 	//NOTICE 注意这里的相机内参数其实都是类的静态成员变量；此外相机的内参数矩阵和矫正参数矩阵却是普通的成员变量，
 	//NOTE 这样是否有些浪费内存空间？
 
-    
+// ORB-SLAM2 假设：整个系统运行期间只使用“一台相机、一套内参”
     static float fx;        ///<x轴方向焦距
     static float fy;        ///<y轴方向焦距
     static float cx;        ///<x轴方向光心偏移
